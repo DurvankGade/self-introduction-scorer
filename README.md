@@ -1,4 +1,4 @@
-# Self-Introduction Scorer
+# AI-Powered Self-Introduction Scorer
 
 ![Project Banner](banner.png)
 
@@ -71,31 +71,31 @@ normalized:
 The normalized value is then multiplied by the criterion weight. Summing
 all weighted contributions gives the final score.
 
-Example:\
-- Raw clarity score: 12 out of 15\
-- Normalized: 12 / 15 = 0.8\
-- Weight: 15 percent\
+Example:
+- Raw clarity score: 12 out of 15
+- Normalized: 12 / 15 = 0.8
+- Weight: 15 percent
 - Contribution: 0.8 × 15 = 12 points
 
 ## Tech Stack
 
 ### Backend
 
--   FastAPI\
--   Python\
--   pyspellchecker\
--   vaderSentiment\
+-   FastAPI
+-   Python
+-   pyspellchecker
+-   vaderSentiment
 -   Uvicorn
 
 ### Frontend
 
--   HTML5\
--   CSS3\
+-   HTML5
+-   CSS3
 -   JavaScript
 
 ### Deployment
 
--   Netlify (static frontend)\
+-   Netlify (static frontend)
 -   Render (FastAPI backend)
 
 ## Project Structure
@@ -118,7 +118,7 @@ Example:\
 
 ### Requirements
 
--   Python 3.10 or higher\
+-   Python 3.10 or higher
 -   Git
 
 ### 1. Clone the Repository
@@ -166,9 +166,9 @@ MIT License
 
 ## Author
 
-Durvank Gade\
-GitHub: https://github.com/DurvankGade\
-LinkedIn: https://linkedin.com/in/durvank-gade
+- Durvank Gade
+- GitHub: https://github.com/DurvankGade
+- LinkedIn: https://linkedin.com/in/durvank-gade
 
 ## Submission
 
