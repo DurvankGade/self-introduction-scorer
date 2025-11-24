@@ -3,39 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Transcript Scorer</title>
+    <title>Self-Introduction-Scorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Student Self-Introduction Scorer</h1>
-            <p>Paste the transcript below to get an AI-powered score based on the rubric.</p>
+    <div class="wrap">
+        <header class="topbar">
+            <div class="brand">Self-Introduction-Scorer</div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </header>
-        <main>
-            <div class="input-area">
-                <textarea id="transcript-input" placeholder="Paste transcript here..."></textarea>
-                <div class="options">
-                    <label for="duration-input">Speech Duration (seconds):</label>
-                    <input type="number" id="duration-input" placeholder="e.g., 52">
+
+        <main id="home" class="main">
+            <section class="hero">
+                <div class="hero-left">
+                    <h1>AI-Powered Self-Introduction Scorer</h1>
+                    <p class="subtitle">Paste your transcript and receive a rubric-based score (overall + per-criterion) with concise feedback.</p>
+                    <div class="cta-row">
+                        <button id="scroll-to-score" class="btn">Score my transcript</button>
+                        <a class="muted-link" href="#about">About the author</a>
+                    </div>
+                    <div class="meta">
+                        <div class="meta-text">
+                            <div class="meta-kv"><strong>Submitted to:</strong> Nirmaan</div>
+                        </div>
+                    </div>
                 </div>
-                <button id="score-button">Score My Transcript</button>
-            </div>
-            <div id="results-area" class="hidden">
-                <div id="loading-spinner" class="hidden"></div>
-                <h2>Results</h2>
-                <div class="overall-score-card">
-                    <h3>Overall Score</h3>
-                    <p id="overall-score-value">--</p>
-                    <p id="word-count-value">Word Count: --</p>
+                <div class="hero-right">
+                    <div id="scoring" class="panel">
+                        <label for="transcript-input" class="label">Transcript</label>
+                        <textarea id="transcript-input" placeholder="Paste transcript here..."></textarea>
+                        
+                        <div class="file-upload-wrapper">
+                            <!-- This label is styled like a button and is linked to the hidden file input -->
+                            <label for="file-upload" class="btn">Upload .txt File</label>
+                            <!-- The actual file input is hidden but functional -->
+                            <input type="file" id="file-upload" accept=".txt" class="hidden">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="small-field">
+                                <label for="duration-input" class="label small">Duration (sec)</label>
+                                <input id="duration-input" type="number" min="1" placeholder="e.g., 52">
+                            </div>
+                            <div class="small-field">
+                                <label class="label small">&nbsp;</label>
+                                <button id="score-button" class="btn primary">Score My Transcript</button>
+                            </div>
+                        </div>
+                        <div id="note" class="note">Paste text or upload a file, then click <strong>Score</strong>.</div>
+                    </div>
                 </div>
-                <div id="criterion-scores-container">
-                    <!-- Per-criterion scores will be dynamically inserted here by JavaScript -->
+            </section>
+
+            <section class="results-section">
+                <div id="results-area" class="results hidden">
+                    <div class="overall">
+                        <div>
+                            <div class="label small">Overall Score</div>
+                            <div id="overall-score-value" class="big">--</div>
+                            <div id="word-count-value" class="muted">Words: --</div>
+                        </div>
+                        <div id="loading-spinner" class="spinner hidden" aria-hidden="true"></div>
+                    </div>
+                    <div id="criterion-scores-container" class="criteria"></div>
                 </div>
-            </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="about-panel">
+                    <h2>About</h2>
+                    <h3>Durvank Gade</h3>
+                    <p class="muted">I’m Durvank Gade, an aspiring AI/ML engineer from India with a strong interest in building intelligent systems. I enjoy working at the intersection of product thinking and machine learning.
+I’m currently exploring RAG, agentic AI, and full-stack AI engineering. I like creating projects that are practical, scalable, and genuinely helpful.</p>
+                    <div class="links">
+                        <a href="https://durvankgade.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+                        <a href="https://github.com/DurvankGade" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://linkedin.com/in/durvank-gade" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://drive.google.com/file/d/1LP8Oc9L5zxLD-AShe4XLKDWKtQ_RukKn/view" target="_blank" rel="noopener">Resume</a>
+                    </div>
+                </div>
+            </section>
         </main>
+
+        <footer id="contact" class="footer">
+            <div>Built by Durvank Gade · Submitted to Nirmaan · © <span id="year"></span></div>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
