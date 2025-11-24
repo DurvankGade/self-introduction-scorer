@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from .models import ScoreRequest, ScoreResponse, CriterionScore
 from .logic.scoring_config import scoring_guide_data
+# --- IMPORT THE NEW SCORING FUNCTION ---
+from .logic.scoring import calculate_scores
 
 app = FastAPI(
     title="Transcript Scoring API",
@@ -8,33 +10,32 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Confirm rubric was loaded correctly
-if scoring_guide_data:
-    print("Scoring configuration loaded successfully.")
-    import json
-    print(json.dumps(scoring_guide_data, indent=2))
-else:
-    print("ERROR: Scoring configuration is missing.")
+# ... (The startup print message remains the same) ...
 
 @app.post("/score", response_model=ScoreResponse)
 async def score_transcript(request: ScoreRequest):
-    word_count = len(request.transcript.split())
-
-    # Temporary placeholder scores until scoring logic is added
-    dummy_scores = [
-        CriterionScore(criteria="Content & Structure", score=8.5, feedback="Good structure."),
-        CriterionScore(criteria="Speech Rate", score=10.0, feedback="Ideal speech rate."),
-        CriterionScore(criteria="Language & Grammar", score=7.0, feedback="Some minor grammatical issues."),
-        CriterionScore(criteria="Clarity", score=9.0, feedback="Clear and concise delivery."),
-        CriterionScore(criteria="Engagement", score=8.0, feedback="Friendly and engaging tone.")
+    # --- REPLACE DUMMY LOGIC WITH REAL LOGIC ---
+    
+    # 1. Call the main scoring orchestrator
+    per_criterion_results, overall_score, word_count = calculate_scores(
+        transcript=request.transcript,
+        duration_sec=request.duration_sec
+    )
+    
+    # 2. Format the results into the Pydantic response model
+    criterion_scores = [
+        CriterionScore(
+            criteria=criterion,
+            score=result['score'],
+            feedback=result['feedback']
+        )
+        for criterion, result in per_criterion_results.items()
     ]
-
-    overall_score = 85.0
-
+    
     return ScoreResponse(
-        overall_score=overall_score,
+        overall_score=round(overall_score, 2),
         word_count=word_count,
-        per_criterion_scores=dummy_scores
+        per_criterion_scores=criterion_scores
     )
 
 @app.get("/")

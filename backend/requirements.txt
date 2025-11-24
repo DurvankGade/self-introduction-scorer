@@ -1,3 +1,5 @@
 fastapi
 uvicorn[standard]
 pandas
+language-tool-python
+vaderSentiment
