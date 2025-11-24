@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from .models import ScoreRequest, ScoreResponse, CriterionScore
-from .logic.scoring_config import scoring_guide_data
-# --- IMPORT THE NEW SCORING FUNCTION ---
+from fastapi.middleware.cors import CORSMiddleware
 from .logic.scoring import calculate_scores
 
 app = FastAPI(
@@ -10,7 +9,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ... (The startup print message remains the same) ...
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.post("/score", response_model=ScoreResponse)
 async def score_transcript(request: ScoreRequest):
