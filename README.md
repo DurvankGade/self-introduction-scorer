@@ -15,7 +15,7 @@ This project was built as part of the Nirmaan AI Intern Case Study.
 -   Backend API: https://self-introduction-scorer.onrender.com/score
 -   API Documentation:
     https://self-introduction-scorer.onrender.com/docs
-
+- Demo Video: https://drive.google.com/file/d/1Y3WEW6r_Yo_kmRn6Dp5rdvevyTrgPYpr/view?usp=sharing
 ## Overview
 
 The Self-Introduction Scorer analyzes an uploaded or pasted transcript
