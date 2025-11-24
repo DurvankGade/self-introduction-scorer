@@ -2,7 +2,8 @@
 FROM python:3.11-slim
 
 # Install the Java Runtime Environment
-RUN apt-get update && apt-get install -y openjdk-17-jre-headless
+# CORRECTED: Changed package name from version 17 to 21, as suggested by the build log.
+RUN apt-get update && apt-get install -y openjdk-21-jre-headless
 
 # Set a working directory inside the container
 WORKDIR /app
@@ -14,7 +15,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Now copy the application code into the container
-# CORRECTED: Removed the leading "./"
 COPY app ./app
 
 # Expose the port that Uvicorn will run on
