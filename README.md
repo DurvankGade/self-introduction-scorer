@@ -50,15 +50,15 @@ results.
     -   Keyword detection\
     -   Filler word frequency analysis
 -   NLP-Based Processing
-    -   Spelling evaluation via `pyspellchecker`\
+    -   Spelling evaluation via `pyspellchecker`
     -   Positivity and sentiment scoring via VADER
 -   Weighted Scoring
-    -   Each criterion has a configurable maximum score and weight\
+    -   Each criterion has a configurable maximum score and weight
     -   The system normalizes raw scores and computes a weighted sum
 
 ### Deployment
 
--   Frontend deployed on Netlify\
+-   Frontend deployed on Netlify
 -   Backend hosted on Render using a Python-native environment
 
 ## Scoring Formula
